@@ -53,10 +53,10 @@ class SpikingVGGBN(nn.Module):
         )
         
 
-        TATCA_input_channels = 256
-        self.TATCA_module = TATCA(kernel_size_t=3, T=T, channel=TATCA_input_channels)  
-        #self.TATCA_module = TA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
-        #self.TATCA_module = CA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
+        tatca_input_channels = 256
+        self.tatca_module = TATCA(kernel_size_t=3, T=T, channel=tatca_input_channels)  
+        #self.tatca_module = TA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
+        #self.tatca_module = CA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
 
         self.part2 = nn.Sequential(
             self._make_layers(cfg[vgg_name][3], dropout, neuron, **kwargs),
