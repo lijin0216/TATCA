@@ -92,10 +92,10 @@ class PreActResNet(nn.Module):
             self._make_layer(block, 128, num_blocks[1], 2, dropout, neuron, **kwargs)
         )
         
-        TATCA_input_channels = 128 * block.expansion
-        self.TATCA_module = TATCA(kernel_size_t=3, T=T, channel=TATCA_input_channels)
-        #self.TATCA_module = TA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
-        #self.TATCA_module = CA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
+        tatca_input_channels = 128 * block.expansion
+        self.tatca_module = TATCA(kernel_size_t=3, T=T, channel=tatca_input_channels)
+        #self.tatca_module = TA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
+        #self.tatca_module = CA(kernel_size_t=3, kernel_size_c=3, T=T, channel=tcja_input_channels)  
 
         self.part2 = nn.Sequential(
             self._make_layer(block, 256, num_blocks[2], 2, dropout, neuron, **kwargs),
